@@ -46,6 +46,11 @@ Help:
     -play             play the sound and quit (for testing the volume)
     <minutes>         If not specified, then the default value is 25.
 
+Tested with
+-----------
+
+Tested under Manjaro and Ubuntu 16.04 with Python 3.
+
 Dependencies
 ------------
 
