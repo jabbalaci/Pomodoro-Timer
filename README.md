@@ -27,7 +27,7 @@ Usage
 
     $ ./pom-timer.py
 
-I suggest creating a desktop icon (see the `icon.png`) file and point
+I suggest creating a desktop icon (see the `icon.png` file) and point
 the icon to `launcher.sh`. The launcher script will start the GUI timer.
 
 When I start the timer, I like to minimize it. When the time is up, a
