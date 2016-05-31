@@ -81,3 +81,5 @@ and I leave a margin on the right side. I use this timer for a session: I start
 the counter and minimize the timer, so it doesn't cause any stress or distraction.
 When the time is up, I draw a small circle on the margin next to the task. The
 circle represents a *tomato*, a finished session.
+
+(This README file was written in two pomodoro sessions).
