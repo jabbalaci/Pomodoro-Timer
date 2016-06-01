@@ -34,7 +34,7 @@ WINDOW_TITLE = 'pom timer'
 DEBUG = False
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 SOUND_FILE = '{d}/timer_done.mp3'.format(d=PROJECT_DIR)
-SOUND_VOLUME = '0.3'
+SOUND_VOLUME = '0.04'
 
 required_commands = [
     '/usr/bin/wmctrl',      # in package wmctrl
