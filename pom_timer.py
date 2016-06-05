@@ -17,6 +17,7 @@ Author: Laszlo Szathmary, alias Jabba Laci, 2016, jabba.laci@gmail.com
 import os
 import re
 import shlex
+import socket
 import sys
 import time
 from collections import OrderedDict
@@ -35,6 +36,10 @@ DEBUG = False
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 SOUND_FILE = '{d}/timer_done.mp3'.format(d=PROJECT_DIR)
 SOUND_VOLUME = '0.04'
+
+hostname = socket.gethostname()
+if hostname == 'jabba-hq':
+    SOUND_VOLUME = 0.25
 
 required_commands = [
     '/usr/bin/wmctrl',      # in package wmctrl
