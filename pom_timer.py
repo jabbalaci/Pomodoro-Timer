@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# encoding: utf-8
 
 """
 Count down seconds from a given minute value
@@ -149,9 +148,10 @@ def formatter(sec):
 
 
 def play_sound():
-    os.system("play -q -v {vol} {fname} &".format(
-        vol=SOUND_VOLUME, fname=SOUND_FILE
-    ))
+    for _ in range(2):
+        os.system("play -q -v {vol} {fname}".format(
+            vol=SOUND_VOLUME, fname=SOUND_FILE
+        ))
 
 
 def count_down():

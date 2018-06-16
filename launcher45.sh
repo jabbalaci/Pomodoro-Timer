@@ -4,4 +4,4 @@ SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
 
 cd $SCRIPTPATH
-./pom_timer.py 55 2>/dev/null &
+./pom_timer.py 45 2>/dev/null &
