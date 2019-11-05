@@ -14,36 +14,27 @@ Author: Laszlo Szathmary, alias Jabba Laci, 2016, jabba.laci@gmail.com
 """
 
 import os
-import re
 import shlex
-import socket
 import sys
 import time
 from collections import OrderedDict
 from subprocess import PIPE, STDOUT, Popen
 
-# Manjaro: sudo pacman -S tk
-# Ubuntu:  sudo apt-get install python3-tk
 import tkinter as tk
 
 go_on = None    # will be set later
 
-VERSION = '0.1'
+VERSION = '0.1.1'
 MINUTES = 25    # 25 minutes is the default
 WINDOW_TITLE = 'pom timer'
 DEBUG = False
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-SOUND_FILE = '{d}/timer_done.mp3'.format(d=PROJECT_DIR)
-SOUND_VOLUME = '0.04'
-
-hostname = socket.gethostname()
-if hostname == 'jabba-hq':
-    SOUND_VOLUME = 0.25
+SOUND_FILE = '{d}/assets/done.mp3'.format(d=PROJECT_DIR)
 
 required_commands = [
     '/usr/bin/wmctrl',      # in package wmctrl
     '/usr/bin/xdotool',     # in package xdotool
-    '/usr/bin/play',        # in package sox
+    '/usr/bin/mplayer',     # in package mplayer
 ]
 
 
@@ -149,9 +140,11 @@ def formatter(sec):
 
 def play_sound():
     for _ in range(2):
-        os.system("play -q -v {vol} {fname}".format(
-            vol=SOUND_VOLUME, fname=SOUND_FILE
-        ))
+        # cmd = "play -q -v {vol} {fname}".format(
+            # vol=SOUND_VOLUME, fname=SOUND_FILE
+        # )
+        cmd = 'mplayer "{fname}" 1> /dev/null 2> /dev/null'.format(fname=SOUND_FILE)
+        os.system(cmd)
 
 
 def count_down():
@@ -162,7 +155,11 @@ def count_down():
             play_sound()
             switch_to_window(WINDOW_TITLE)
         time_str.set(formatter(t))
-        root.update()
+        try:
+            root.update()
+        except tk._tkinter.TclError:
+            # if the app. was closed during countdown:
+            sys.exit(0)
         # delay one second
         for _ in range(2):
             time.sleep(0.5)    # if minimized then maximized,
@@ -207,20 +204,20 @@ Usage: {fname} [parameter]
 
 Parameters:
 -h, --help        this help
--play             play the sound and quit (for testing the volume)
+-p, --play        play the sound and quit (for testing the volume)
 <minutes>         If not specified, then the default value is 25.
 """.strip().format(ver=VERSION, fname=sys.argv[0]))
 
 if len(sys.argv) > 1:
     param = sys.argv[1]
-    if param in ['-h', '--help']:
+    if param in ('-h', '--help'):
         print_usage()
         sys.exit(0)
-    elif param == '-play':
+    elif param in ('-p', '--play'):
         # for testing the volume
         play_sound()
         sys.exit(0)
-    elif re.search(r'\d+', param):
+    elif param.isdigit():
         try:
             MINUTES = int(param)
         except ValueError:

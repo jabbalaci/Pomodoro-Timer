@@ -1,0 +1,10 @@
+Ubuntu:
+
+    sudo apt install python-tk python3-tk tk-dev
+    sudo apt install wmctrl
+    sudo apt install xdotool
+    sudo apt install sox
+
+Manjaro:
+
+    sudo pacman -S tk

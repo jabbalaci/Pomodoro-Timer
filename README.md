@@ -20,7 +20,7 @@ based on the idea that frequent breaks can improve mental agility.*"
 Screenshot
 ----------
 
-![pomodoro timer](screenshot.png)
+![pomodoro timer](assets/screenshot.png)
 
 Usage
 -----
@@ -37,19 +37,19 @@ sound file is played *and* the timer's window appears on your screen
 Help:
 
     $ ./pom_timer.py -h
-    Jabba's Pomodoro Timer v0.1
+    Jabba's Pomodoro Timer v0.1.1
 
     Usage: ./pom_timer.py [parameter]
 
     Parameters:
     -h, --help        this help
-    -play             play the sound and quit (for testing the volume)
+    -p, --play        play the sound and quit (for testing the volume)
     <minutes>         If not specified, then the default value is 25.
 
 Tested with
 -----------
 
-Tested under Manjaro and Ubuntu 16.04 with Python 3.
+Tested under Manjaro and Ubuntu 18.04 with Python 3.
 
 Dependencies
 ------------
@@ -57,10 +57,10 @@ Dependencies
 Install the following packages with your package manager:
 * wmctrl
 * xdotool
-* sox
+* mplayer
 
 The GUI is based on Tkinter. For Python 3 I had to install it too
-(Manjaro: `sudo pacman -S tk`, Ubuntu: `sudo apt-get install python3-tk`).
+(Manjaro: `sudo pacman -S tk`, Ubuntu: `sudo apt install python3-tk`).
 
 Links
 -----
